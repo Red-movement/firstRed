@@ -30,6 +30,8 @@ funcionalidad que esten trabajando, ejemplo, voy a trabajar en el boton de agreg
 
 rama la creare usando `git checkout -b addUserButton`. Sino en todo caso pueden llamar a las ramas con su nombre
 
+---
+
 # <u> Base de datos</u>
 
 Aca estoy definiendo lo que van a ser las tablas de la base de datos, esto se hara en postgreSQL y con algun ORM de Flask (por favor quien se acuerde cual era, agreguelo jeje)
@@ -74,7 +76,7 @@ Usuarios a movimientos => uno a muchos
 
 Categorias a movimientos => muchos a muchos
 
-
+---
 
 # Python
 
@@ -114,12 +116,12 @@ Pero Pero Pero... Deje un archivo (si prestan atencion) el cual se llama require
 
 
 
+Pd: Me olvide de agregarles como hacer para actualizar el archivo requeriments.txt en caso que instalen una libreria nueva. Para esto, tienen que instalarla como siempre: `pip install [nombre de la libreria]` y despues `pip freeze > requeriments.txt`
 
 
 
+> Have Fun!!!!!
 
+---
 
-
-
-
-
+<img title="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Glider-white.svg/800px-Glider-white.svg.png" alt="image.png" width="140" height="140">
