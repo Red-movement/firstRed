@@ -1,19 +1,27 @@
-#traigo la distro de linux, esta es livianita y por eso me gusto
 FROM alpine:3.18
 
-#instalo python pip
-RUN apk add --no-cache python3-dev
-RUN apk add --no-cache py3-pip
-RUN pip3 install --upgrade pip
+RUN apk update \
+    && apk add --no-cache python3-dev \
+    && apk add --no-cache py3-pip \
+    && pip3 install --upgrade pip \
+    && apk add --no-cache postgresql postgresql-client \
+    && mkdir -p /run/postgresql \
+    && chown -R postgres:postgres /run/postgresql \
+    && apk add --no-cache su-exec \
+    && su-exec postgres initdb -D /var/lib/postgresql/data
 
-#indico mi directorio de trabajo
+USER postgres
+
+RUN pg_ctl -D /var/lib/postgresql/data start \
+    && sleep 5 \
+    && psql -U postgres -c "CREATE DATABASE gasty;"
+
+EXPOSE 5432
+
 WORKDIR /app
 
-# copio todo a ese directorio
 COPY . /app
 
-#instalo dependencias
 RUN pip3 --no-cache install -r requirements.txt
 
-#ejecuto mi server
 CMD ["python3", "src/app.py"]
